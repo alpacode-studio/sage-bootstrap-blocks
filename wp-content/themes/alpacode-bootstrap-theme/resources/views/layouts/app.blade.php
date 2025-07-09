@@ -10,11 +10,11 @@
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@100..900&display=swap" rel="stylesheet">
     
     <!-- Vendor CSS - Simple approach -->
-    <link href="{{ get_template_directory_uri() }}/vendor/bootstrap/bootstrap.min.css" rel="stylesheet">
-    <link href="{{ get_template_directory_uri() }}/vendor/bootstrap-icons/font/bootstrap-icons.min.css" rel="stylesheet">
-    <link href="{{ get_template_directory_uri() }}/vendor/glightbox/glightbox.min.css" rel="stylesheet">
-    <link href="{{ get_template_directory_uri() }}/vendor/swiper/swiper-bundle.min.css" rel="stylesheet">
-    <link href="{{ get_template_directory_uri() }}/vendor/aos/aos.css" rel="stylesheet">
+    <link href="{{ get_template_directory_uri() }}/vendors/bootstrap/bootstrap.min.css" rel="stylesheet">
+    <link href="{{ get_template_directory_uri() }}/vendors/bootstrap-icons/font/bootstrap-icons.min.css" rel="stylesheet">
+    <link href="{{ get_template_directory_uri() }}/vendors/glightbox/glightbox.min.css" rel="stylesheet">
+    <link href="{{ get_template_directory_uri() }}/vendors/swiper/swiper-bundle.min.css" rel="stylesheet">
+    <link href="{{ get_template_directory_uri() }}/vendors/aos/aos.css" rel="stylesheet">
     
     <!-- Theme switcher -->
     <script>
@@ -28,7 +28,7 @@
     @php(wp_head())
 
     {{-- Comment out Vite for now --}}
-    {{-- @vite(['resources/css/app.css', 'resources/js/app.js']) --}}
+    @vite(['resources/css/app.css', 'resources/js/app.js'])
   </head>
 
   <body @php(body_class())>
@@ -54,11 +54,16 @@
       @include('sections.footer')
     </div>
 
-    <!-- Vendor JS -->
-    <script src="{{ get_template_directory_uri() }}/vendor/bootstrap/bootstrap.bundle.min.js"></script>
-    <script src="{{ get_template_directory_uri() }}/vendor/glightbox/glightbox.min.js"></script>
-    <script src="{{ get_template_directory_uri() }}/vendor/swiper/swiper-bundle.min.js"></script>
-    <script src="{{ get_template_directory_uri() }}/vendor/aos/aos.js"></script>
+    <!-- Vendors JS -->
+    <script src="{{ get_template_directory_uri() }}/vendors/gsap/gsap.min.js"></script>
+    <script src="{{ get_template_directory_uri() }}/vendors/purecounter/purecounter.js"></script>
+    <script src="{{ get_template_directory_uri() }}/vendors/imagesloaded/imagesloaded.pkgd.min.js"></script>
+    <script src="{{ get_template_directory_uri() }}/vendors/isotope/isotope.pkgd.min.js"></script>
+
+    <script src="{{ get_template_directory_uri() }}/vendors/bootstrap/bootstrap.bundle.min.js"></script>
+    <script src="{{ get_template_directory_uri() }}/vendors/glightbox/glightbox.min.js"></script>
+    <script src="{{ get_template_directory_uri() }}/vendors/swiper/swiper-bundle.min.js"></script>
+    <script src="{{ get_template_directory_uri() }}/vendors/aos/aos.js"></script>
 
     @php(do_action('get_footer'))
     @php(wp_footer())

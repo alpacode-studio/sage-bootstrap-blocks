@@ -1,5 +1,6 @@
 <header class="banner">
-  <a class="brand" href="{{ home_url('/') }}">
+  {{-- 
+    <a class="brand" href="{{ home_url('/') }}">
     {!! $siteName !!}
   </a>
 
@@ -8,4 +9,5 @@
       {!! wp_nav_menu(['theme_location' => 'primary_navigation', 'menu_class' => 'nav', 'echo' => false]) !!}
     </nav>
   @endif
+   --}}
 </header>

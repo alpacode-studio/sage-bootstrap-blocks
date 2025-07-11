@@ -9,12 +9,12 @@
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@100..900&display=swap" rel="stylesheet">
     
-    <!-- Vendor CSS - Simple approach -->
-    <link href="<?php echo e(get_template_directory_uri()); ?>/vendors/bootstrap/bootstrap.min.css" rel="stylesheet">
-    <link href="<?php echo e(get_template_directory_uri()); ?>/vendors/bootstrap-icons/font/bootstrap-icons.min.css" rel="stylesheet">
-    <link href="<?php echo e(get_template_directory_uri()); ?>/vendors/glightbox/glightbox.min.css" rel="stylesheet">
-    <link href="<?php echo e(get_template_directory_uri()); ?>/vendors/swiper/swiper-bundle.min.css" rel="stylesheet">
-    <link href="<?php echo e(get_template_directory_uri()); ?>/vendors/aos/aos.css" rel="stylesheet">
+    <!-- Vendor CSS - Public directory -->
+    <link href="<?php echo e(get_template_directory_uri()); ?>/public/vendors/bootstrap/bootstrap.min.css" rel="stylesheet">
+    <link href="<?php echo e(get_template_directory_uri()); ?>/public/vendors/bootstrap-icons/font/bootstrap-icons.min.css" rel="stylesheet">
+    <link href="<?php echo e(get_template_directory_uri()); ?>/public/vendors/glightbox/glightbox.min.css" rel="stylesheet">
+    <link href="<?php echo e(get_template_directory_uri()); ?>/public/vendors/swiper/swiper-bundle.min.css" rel="stylesheet">
+    <link href="<?php echo e(get_template_directory_uri()); ?>/public/vendors/aos/aos.css" rel="stylesheet">
     
     <!-- Theme switcher -->
     <script>
@@ -55,16 +55,16 @@
       <?php echo $__env->make('sections.footer', array_diff_key(get_defined_vars(), ['__data' => 1, '__path' => 1]))->render(); ?>
     </div>
 
-    <!-- Vendors JS -->
-    <script src="<?php echo e(get_template_directory_uri()); ?>/vendors/gsap/gsap.min.js"></script>
-    <script src="<?php echo e(get_template_directory_uri()); ?>/vendors/purecounter/purecounter.js"></script>
-    <script src="<?php echo e(get_template_directory_uri()); ?>/vendors/imagesloaded/imagesloaded.pkgd.min.js"></script>
-    <script src="<?php echo e(get_template_directory_uri()); ?>/vendors/isotope/isotope.pkgd.min.js"></script>
+    <!-- Vendors JS - Public directory -->
+    <script src="<?php echo e(get_template_directory_uri()); ?>/public/vendors/gsap/gsap.min.js"></script>
+    <script src="<?php echo e(get_template_directory_uri()); ?>/public/vendors/purecounter/purecounter.js"></script>
+    <script src="<?php echo e(get_template_directory_uri()); ?>/public/vendors/imagesloaded/imagesloaded.pkgd.min.js"></script>
+    <script src="<?php echo e(get_template_directory_uri()); ?>/public/vendors/isotope/isotope.pkgd.min.js"></script>
 
-    <script src="<?php echo e(get_template_directory_uri()); ?>/vendors/bootstrap/bootstrap.bundle.min.js"></script>
-    <script src="<?php echo e(get_template_directory_uri()); ?>/vendors/glightbox/glightbox.min.js"></script>
-    <script src="<?php echo e(get_template_directory_uri()); ?>/vendors/swiper/swiper-bundle.min.js"></script>
-    <script src="<?php echo e(get_template_directory_uri()); ?>/vendors/aos/aos.js"></script>
+    <script src="<?php echo e(get_template_directory_uri()); ?>/public/vendors/bootstrap/bootstrap.bundle.min.js"></script>
+    <script src="<?php echo e(get_template_directory_uri()); ?>/public/vendors/glightbox/glightbox.min.js"></script>
+    <script src="<?php echo e(get_template_directory_uri()); ?>/public/vendors/swiper/swiper-bundle.min.js"></script>
+    <script src="<?php echo e(get_template_directory_uri()); ?>/public/vendors/aos/aos.js"></script>
 
     <?php (do_action('get_footer')); ?>
     <?php (wp_footer()); ?>

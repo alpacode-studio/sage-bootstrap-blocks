@@ -1,100 +1,140 @@
 @props([
-  'subtitle' => 'Testimonials',
-  'title' => 'What Our Users Are Saying',
-  'description' => 'Real Stories of Success and Satisfaction from Our Diverse Community',
-  'useMasonry' => true,
+  'sectionTitle' => 'Testimonials',
+  'sectionDescription' => 'Necessitatibus eius consequatur ex aliquid fuga eum quidem sint consectetur velit',
+  'showNavigation' => true,
+  'quoteIcon' => 'bi bi-chat-quote-fill',
+  'starIcon' => 'bi bi-star-fill',
+  'swiperConfig' => [
+    'loop' => true,
+    'speed' => 600,
+    'autoplay' => [
+      'delay' => 4000
+    ],
+    'slidesPerView' => 1,
+    'spaceBetween' => 30,
+    'breakpoints' => [
+      '768' => [
+        'slidesPerView' => 2
+      ],
+      '1200' => [
+        'slidesPerView' => 3
+      ]
+    ]
+  ],
   'testimonials' => [
     [
-      'quote' => 'This platform has completely transformed the way I manage my business finances. The real-time transaction tracking and seamless payment options have saved me so much time and effort!',
-      'author' => [
-        'name' => 'John Davis',
-        'title' => 'Small Business Owner',
-        'image' => 'resources/images/person-sq-2-min.jpg',
-        'alt' => 'John Davis'
-      ]
+      'name' => 'Jessica Martinez',
+      'position' => 'UX Designer',
+      'image' => 'resources/images/person/person-f-12.webp',
+      'imageAlt' => 'Jessica Martinez',
+      'rating' => 5,
+      'testimonial' => 'Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum consectetur adipiscing elit sed eiusmod tempor.'
     ],
     [
-      'quote' => 'As a freelancer, managing my finances can be overwhelming. The budgeting tools and personalized insights have made it so much easier to stay on top of my expenses and plan for the future.',
-      'author' => [
-        'name' => 'Emily Smith',
-        'title' => 'Freelancer',
-        'image' => 'resources/images/person-sq-1-min.jpg',
-        'alt' => 'Emily Smith'
-      ]
+      'name' => 'David Rodriguez',
+      'position' => 'Software Engineer',
+      'image' => 'resources/images/person/person-m-8.webp',
+      'imageAlt' => 'David Rodriguez',
+      'rating' => 5,
+      'testimonial' => 'Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur excepteur sint occaecat cupidatat non proident sunt in culpa.'
     ],
     [
-      'quote' => 'The investment options and portfolio management tools on this platform are top-notch. The variety of choices caters to all types of investors, from conservative to aggressive. I especially appreciate how the tailored recommendations align perfectly with my financial goals. It\'s a game-changer for anyone serious about growing their wealth.',
-      'author' => [
-        'name' => 'Michael Rodriguez',
-        'title' => 'Investor',
-        'image' => 'resources/images/person-sq-5-min.jpg',
-        'alt' => 'Michael Rodriguez'
-      ]
+      'name' => 'Amanda Wilson',
+      'position' => 'Creative Director',
+      'image' => 'resources/images/person/person-f-6.webp',
+      'imageAlt' => 'Amanda Wilson',
+      'rating' => 5,
+      'testimonial' => 'Lorem ipsum dolor sit amet consectetur adipiscing elit sed do eiusmod tempor incididunt ut labore et dolore magna aliqua ut enim ad minim veniam quis nostrud.'
     ],
     [
-      'quote' => 'I never thought managing money could be this simple! The user-friendly interface and secure transaction process give me the confidence to handle my finances independently.',
-      'author' => [
-        'name' => 'Sarah Lee',
-        'title' => 'College Student',
-        'image' => 'resources/images/person-sq-3-min.jpg',
-        'alt' => 'Sarah Lee'
-      ]
+      'name' => 'Ryan Thompson',
+      'position' => 'Business Analyst',
+      'image' => 'resources/images/person/person-m-12.webp',
+      'imageAlt' => 'Ryan Thompson',
+      'rating' => 5,
+      'testimonial' => 'Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque laudantium totam rem aperiam eaque ipsa quae ab illo inventore veritatis.'
     ],
     [
-      'quote' => 'The security features are outstanding. Knowing that my financial data is protected gives me peace of mind, and the platform\'s efficiency makes it a pleasure to use.',
-      'author' => [
-        'name' => 'James Kim',
-        'title' => 'IT Consultant',
-        'image' => 'resources/images/person-sq-7-min.jpg',
-        'alt' => 'James Kim'
-      ]
-    ],
-    [
-      'quote' => 'The platform\'s intuitive design and robust features have been a game-changer for my startup. It\'s helped me streamline operations and focus on growing my business.',
-      'author' => [
-        'name' => 'Laura Brown',
-        'title' => 'Entrepreneur',
-        'image' => 'resources/images/person-sq-8-min.jpg',
-        'alt' => 'Laura Brown'
-      ]
+      'name' => 'Rachel Chen',
+      'position' => 'Project Manager',
+      'image' => 'resources/images/person/person-f-10.webp',
+      'imageAlt' => 'Rachel Chen',
+      'rating' => 5,
+      'testimonial' => 'At vero eos et accusamus et iusto odio dignissimos ducimus qui blanditiis praesentium voluptatum deleniti atque corrupti quos dolores et quas molestias excepturi.'
     ]
   ]
 ])
 
-<section class="section testimonials__v2" id="testimonials">
-  <div class="container">
-    {{-- Header Section --}}
-    <div class="row mb-5">
-      <div class="col-lg-5 mx-auto text-center">
-        <span class="subtitle text-uppercase mb-3" data-aos="fade-up" data-aos-delay="0">{{ $subtitle }}</span>
-        <h2 class="mb-3" data-aos="fade-up" data-aos-delay="100">{{ $title }}</h2>
-        <p data-aos="fade-up" data-aos-delay="200">{{ $description }}</p>
-      </div>
-    </div>
+<section id="testimonials" class="testimonials section">
+  {{-- Section Title --}}
+  <div class="container section-title" data-aos="fade-up">
+    <h2>{{ $sectionTitle }}</h2>
+    <p>{{ $sectionDescription }}</p>
+  </div>
 
-    {{-- Testimonials Grid --}}
-    <div class="row g-4" @if($useMasonry) data-masonry='{"percentPosition": true}' @endif>
-      @foreach($testimonials as $index => $testimonial)
-        <div class="col-md-6 col-lg-4" data-aos="fade-up" data-aos-delay="{{ $index * 100 }}">
-          <div class="testimonial rounded-4 p-4">
-            <blockquote class="mb-3">
-              &ldquo;{{ $testimonial['quote'] }}&rdquo;
-            </blockquote>
-            
-            <div class="testimonial-author d-flex gap-3 align-items-center">
-              <div class="author-img">
-                <img class="rounded-circle img-fluid" 
-                     src="{{ Vite::asset($testimonial['author']['image']) }}" 
-                     alt="{{ $testimonial['author']['alt'] ?? $testimonial['author']['name'] }}">
+  <div class="container" data-aos="fade-up" data-aos-delay="100">
+
+    <div class="testimonial-slider swiper init-swiper">
+      <script type="application/json" class="swiper-config">
+        @php
+          $config = $swiperConfig;
+          if ($showNavigation) {
+            $config['navigation'] = [
+              'nextEl' => '.swiper-button-next',
+              'prevEl' => '.swiper-button-prev'
+            ];
+          }
+        @endphp
+        {!! json_encode($config) !!}
+      </script>
+
+      <div class="swiper-wrapper">
+        @foreach($testimonials as $index => $testimonial)
+          <div class="swiper-slide">
+            <div class="testimonial-item" data-aos="zoom-in" data-aos-delay="{{ 200 + ($index * 100) }}">
+              
+              {{-- Testimonial Header --}}
+              <div class="testimonial-header">
+                <img src="{{ Vite::asset($testimonial['image']) }}" 
+                     alt="{{ $testimonial['imageAlt'] ?? $testimonial['name'] }}" 
+                     class="img-fluid" 
+                     loading="lazy">
+                
+                <div class="rating">
+                  @for($i = 1; $i <= 5; $i++)
+                    <i class="{{ $i <= $testimonial['rating'] ? $starIcon : 'bi bi-star' }}"></i>
+                  @endfor
+                </div>
               </div>
-              <div class="lh-base">
-                <strong class="d-block">{{ $testimonial['author']['name'] }}</strong>
-                <span>{{ $testimonial['author']['title'] }}</span>
+
+              {{-- Testimonial Body --}}
+              <div class="testimonial-body">
+                <p>{{ $testimonial['testimonial'] }}</p>
               </div>
+
+              {{-- Testimonial Footer --}}
+              <div class="testimonial-footer">
+                <h5>{{ $testimonial['name'] }}</h5>
+                <span>{{ $testimonial['position'] }}</span>
+                <div class="quote-icon">
+                  <i class="{{ $quoteIcon }}"></i>
+                </div>
+              </div>
+
             </div>
           </div>
+        @endforeach
+      </div>
+
+      {{-- Navigation --}}
+      @if($showNavigation)
+        <div class="swiper-navigation">
+          <div class="swiper-button-prev"></div>
+          <div class="swiper-button-next"></div>
         </div>
-      @endforeach
+      @endif
+
     </div>
+
   </div>
 </section>

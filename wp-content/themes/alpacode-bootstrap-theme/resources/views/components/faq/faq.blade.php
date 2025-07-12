@@ -1,83 +1,79 @@
 @props([
-  'subtitle' => 'FAQ',
-  'title' => 'Frequently Asked Questions',
-  'description' => 'Utilize our tools to develop your concepts and bring your vision to life. Once complete, effortlessly share your creations.',
-  'accordionId' => 'accordionPanelsStayOpenExample',
   'faqs' => [
     [
-      'id' => 'panelsStayOpen-collapseOne',
-      'question' => 'What services does your web agency offer?',
-      'answer' => 'Our web agency offers a comprehensive range of services including web design and development, e-commerce solutions, SEO optimization, content creation, website maintenance, and digital marketing strategies. We tailor our services to meet the unique needs of each client, ensuring a customized approach to every project.',
-      'expanded' => true
+      'question' => 'Vivamus suscipit tortor eget felis porttitor volutpat?',
+      'answer' => 'Nulla quis lorem ut libero malesuada feugiat. Vestibulum ac diam sit amet quam vehicula elementum sed sit amet dui. Curabitur aliquet quam id dui posuere blandit. Nulla porttitor accumsan tincidunt.',
+      'active' => true
     ],
     [
-      'id' => 'panelsStayOpen-collapseTwo',
-      'question' => 'How much does it cost to build a website?',
-      'answer' => 'The cost of building a website can vary widely depending on the complexity, features, and specific requirements of your project. We offer several pricing packages to accommodate different budgets and needs. After an initial consultation, we can provide a detailed quote based on your specific goals and objectives.',
-      'expanded' => false
+      'question' => 'Curabitur aliquet quam id dui posuere blandit?',
+      'answer' => 'Vestibulum ante ipsum primis in faucibus orci luctus et ultrices posuere cubilia Curae; Donec velit neque, auctor sit amet aliquam vel, ullamcorper sit amet ligula. Proin eget tortor risus. Mauris blandit aliquet elit, eget tincidunt nibh pulvinar.',
+      'active' => false
     ],
     [
-      'id' => 'panelsStayOpen-collapseThree',
-      'question' => 'How long does it take to design and develop a website?',
-      'answer' => 'The timeline for designing and developing a website depends on the project\'s complexity and scope. Typically, a standard business website takes about 4-6 weeks to complete, while more complex projects like e-commerce sites or custom applications may take longer. We work closely with our clients to establish a realistic timeline and keep you informed throughout the process.',
-      'expanded' => false
+      'question' => 'Sed porttitor lectus nibh ullamcorper sit amet?',
+      'answer' => 'Curabitur non nulla sit amet nisl tempus convallis quis ac lectus. Praesent sapien massa, convallis a pellentesque nec, egestas non nisi. Donec sollicitudin molestie malesuada. Vestibulum ac diam sit amet quam vehicula elementum.',
+      'active' => false
     ],
     [
-      'id' => 'panelsStayOpen-collapseFour',
-      'question' => 'Will my website be mobile-friendly?',
-      'answer' => 'Absolutely! All the websites we design and develop are fully responsive, meaning they are optimized to work seamlessly across all devices, including desktops, tablets, and smartphones. Ensuring a great user experience on mobile devices is a top priority in our development process.',
-      'expanded' => false
+      'question' => 'Nulla quis lorem ut libero malesuada feugiat?',
+      'answer' => 'Donec sollicitudin molestie malesuada. Quisque velit nisi, pretium ut lacinia in, elementum id enim. Vestibulum ante ipsum primis in faucibus orci luctus et ultrices posuere cubilia Curae; Donec velit neque, auctor sit amet aliquam vel.',
+      'active' => false
     ],
     [
-      'id' => 'panelsStayOpen-collapseFive',
-      'question' => 'Do you provide ongoing support and maintenance for websites?',
-      'answer' => 'Yes, we offer ongoing support and maintenance services to ensure your website remains up-to-date, secure, and functioning smoothly. Our maintenance packages can include regular updates, security monitoring, backups, and technical support to address any issues that may arise. We\'re here to help you keep your website running efficiently long after it\'s launched.',
-      'expanded' => false
+      'question' => 'Vestibulum ac diam sit amet quam vehicula elementum?',
+      'answer' => 'Praesent sapien massa, convallis a pellentesque nec, egestas non nisi. Vestibulum ante ipsum primis in faucibus orci luctus et ultrices posuere cubilia Curae; Donec velit neque, auctor sit amet aliquam vel, ullamcorper sit amet ligula.',
+      'active' => false
     ]
-  ]
+  ],
+  'helpCard' => [
+    'icon' => 'bi bi-chat-dots-fill',
+    'title' => 'Can\'t find answer to your question?',
+    'description' => 'Vestibulum ante ipsum primis in faucibus orci luctus et ultrices posuere cubilia Curae; Donec velit neque, auctor sit amet aliquam vel, ullamcorper sit amet ligula. Vestibulum ac diam sit amet quam vehicula elementum sed sit amet dui. Curabitur aliquet quam id dui posuere blandit. Nulla quis lorem ut libero malesuada feugiat.',
+    'buttonText' => 'Contact Us',
+    'buttonUrl' => '#'
+  ],
+  'showHelpCard' => true,
+  'toggleIcon' => 'bi bi-plus',
+  'activeToggleIcon' => 'bi bi-dash'
 ])
 
-<section class="section faq__v2" id="faq">
-  <div class="container">
-    <div class="row mb-4">
-      <div class="col-md-6 col-lg-7 mx-auto text-center">
-        <span class="subtitle text-uppercase mb-3" data-aos="fade-up" data-aos-delay="0">{{ $subtitle }}</span>
-        <h2 class="h2 fw-bold mb-3" data-aos="fade-up" data-aos-delay="0">{{ $title }}</h2>
-        <p data-aos="fade-up" data-aos-delay="100">{{ $description }}</p>
-      </div>
-    </div>
-    
-    <div class="row">
-      <div class="col-md-8 mx-auto" data-aos="fade-up" data-aos-delay="200">
-        <div class="faq-content">
-          <div class="accordion custom-accordion" id="{{ $accordionId }}">
-            @foreach ($faqs as $index => $faq)
-              <div class="accordion-item">
-                <h2 class="accordion-header">
-                  <button 
-                    class="accordion-button {{ $faq['expanded'] ? '' : 'collapsed' }}" 
-                    type="button" 
-                    data-bs-toggle="collapse" 
-                    data-bs-target="#{{ $faq['id'] }}" 
-                    aria-expanded="{{ $faq['expanded'] ? 'true' : 'false' }}" 
-                    aria-controls="{{ $faq['id'] }}"
-                  >
-                    {{ $faq['question'] }}
-                  </button>
-                </h2>
-                <div 
-                  class="accordion-collapse collapse {{ $faq['expanded'] ? 'show' : '' }}" 
-                  id="{{ $faq['id'] }}"
-                >
-                  <div class="accordion-body">
-                    {{ $faq['answer'] }}
-                  </div>
-                </div>
+<section id="faq" class="faq section">
+  <div class="container" data-aos="fade-up" data-aos-delay="100">
+    <div class="row gy-4 justify-content-between">
+      
+      {{-- FAQ Items Column --}}
+      <div class="col-lg-8">
+        <div class="faq-list">
+          @foreach($faqs as $index => $faq)
+            <div class="faq-item {{ $faq['active'] ? 'faq-active' : '' }}" 
+                 data-aos="fade-up" 
+                 data-aos-delay="{{ 100 + ($index * 100) }}">
+              
+              <h3>{{ $faq['question'] }}</h3>
+              
+              <div class="faq-content">
+                <p>{{ $faq['answer'] }}</p>
               </div>
-            @endforeach
-          </div>
+              
+              <i class="{{ $faq['active'] ? $activeToggleIcon : $toggleIcon }} faq-toggle"></i>
+            </div>
+          @endforeach
         </div>
       </div>
+
+      {{-- Help Card Column --}}
+      @if($showHelpCard && $helpCard)
+        <div class="col-lg-4" data-aos="fade-up" data-aos-delay="200">
+          <div class="faq-card">
+            <i class="{{ $helpCard['icon'] }}"></i>
+            <h3>{{ $helpCard['title'] }}</h3>
+            <p>{{ $helpCard['description'] }}</p>
+            <a href="{{ $helpCard['buttonUrl'] }}" class="btn btn-primary">{{ $helpCard['buttonText'] }}</a>
+          </div>
+        </div>
+      @endif
+      
     </div>
   </div>
 </section>

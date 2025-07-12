@@ -1,82 +1,142 @@
 @props([
-  'title' => 'Why Choose us',
-  'description' => 'Experience the future of finance with our secure, efficient, and user-friendly financial services. Our cutting-edge platform ensures your transactions are safe, streamlined, and easy to manage, empowering you to take control of your financial journey with confidence and convenience.',
-  'videoUrl' => 'https://www.youtube.com/watch?v=DQx96G4yHd8',
-  'videoText' => 'Watch the Video',
-  'showVideo' => true,
+  'sectionTitle' => 'Features',
+  'sectionDescription' => 'Necessitatibus eius consequatur ex aliquid fuga eum quidem sint consectetur velit',
+  'introTitle' => 'Powerful features to accelerate growth',
+  'introDescription' => 'Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris.',
+  'introImage' => 'resources/images/features/features-2.webp',
+  'introImageAlt' => 'Features',
+  'stats' => [
+    [
+      'number' => '150+',
+      'label' => 'Features'
+    ],
+    [
+      'number' => '99.9%',
+      'label' => 'Uptime'
+    ],
+    [
+      'number' => '24/7',
+      'label' => 'Support'
+    ]
+  ],
   'features' => [
     [
-      'icon' => 'bi bi-person-check',
-      'title' => 'User-Friendly Interface',
-      'description' => 'Easy navigation with responsive design for various devices.'
+      'number' => '01',
+      'icon' => 'bi bi-lightning-charge',
+      'title' => 'Lightning Fast Performance',
+      'description' => 'Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur excepteur sint.',
+      'tags' => ['Speed', 'Optimization']
     ],
     [
-      'icon' => 'bi bi-graph-up',
-      'title' => 'Financial Analytics',
-      'description' => 'Budget tracking, expense categorization, and personalized insights.'
+      'number' => '02',
+      'icon' => 'bi bi-shield-check',
+      'title' => 'Enterprise Security',
+      'description' => 'Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum sed.',
+      'tags' => ['Secure', 'Protected']
     ],
     [
-      'icon' => 'bi bi-headset',
-      'title' => 'Customer Support',
-      'description' => '24/7 service via chat, email, phone, and a detailed help center.'
+      'number' => '03',
+      'icon' => 'bi bi-people-fill',
+      'title' => 'Team Collaboration',
+      'description' => 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.',
+      'tags' => ['Teamwork', 'Sync']
     ],
     [
-      'icon' => 'bi bi-shield-lock',
-      'title' => 'Security Features',
-      'description' => 'Data encryption, fraud detection, and prevention mechanisms.'
+      'number' => '04',
+      'icon' => 'bi bi-graph-up-arrow',
+      'title' => 'Advanced Analytics',
+      'description' => 'Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat duis.',
+      'tags' => ['Data', 'Insights']
+    ],
+    [
+      'number' => '05',
+      'icon' => 'bi bi-gear-fill',
+      'title' => 'Smart Automation',
+      'description' => 'Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque laudantium totam rem aperiam.',
+      'tags' => ['AI', 'Workflow']
+    ],
+    [
+      'number' => '06',
+      'icon' => 'bi bi-cloud-arrow-up',
+      'title' => 'Cloud Integration',
+      'description' => 'Eaque ipsa quae ab illo inventore veritatis et quasi architecto beatae vitae dicta sunt explicabo nemo enim ipsam.',
+      'tags' => ['Cloud', 'Scalable']
     ]
-  ]
+  ],
+  'reverseIntro' => false,
+  'showStats' => true,
+  'gridColumns' => 3
 ])
 
-<section class="section features__v2" id="features">
-  <div class="container">
-    <div class="row">
-      <div class="col-12">
-        <div class="d-lg-flex p-5 rounded-4 content" data-aos="fade-in" data-aos-delay="0">
-          <div class="row">
-            <div class="col-lg-5 mb-5 mb-lg-0" data-aos="fade-up" data-aos-delay="0">
-              <div class="row"> 
-                <div class="col-lg-11">
-                  <div class="h-100 flex-column justify-content-between d-flex">
-                    <div>
-                      <h2 class="mb-4">{{ $title }}</h2>
-                      <p class="mb-5">{{ $description }}</p>
-                    </div>
-                    
-                    @if ($showVideo && $videoUrl)
-                      <div class="align-self-start">
-                        <a class="glightbox btn btn-play d-inline-flex align-items-center gap-2" 
-                           href="{{ $videoUrl }}" 
-                           data-gallery="video">
-                          <i class="bi bi-play-fill"></i> {{ $videoText }}
-                        </a>
-                      </div>
-                    @endif
-                  </div>
+<section id="features" class="features section">
+  {{-- Section Title --}}
+  <div class="container section-title" data-aos="fade-up">
+    <h2>{{ $sectionTitle }}</h2>
+    <p>{{ $sectionDescription }}</p>
+  </div>
+
+  <div class="container" data-aos="fade-up" data-aos-delay="100">
+    
+    {{-- Intro Section --}}
+    <div class="row align-items-center mb-5">
+      
+      {{-- Intro Content --}}
+      <div class="col-lg-6 {{ $reverseIntro ? 'order-2' : 'order-1' }}" 
+           data-aos="{{ $reverseIntro ? 'fade-left' : 'fade-right' }}" 
+           data-aos-delay="150">
+        <div class="intro-content">
+          <h2>{{ $introTitle }}</h2>
+          <p>{{ $introDescription }}</p>
+          
+          @if($showStats && !empty($stats))
+            <div class="feature-stats">
+              @foreach($stats as $stat)
+                <div class="stat-item">
+                  <span class="stat-number">{{ $stat['number'] }}</span>
+                  <span class="stat-label">{{ $stat['label'] }}</span>
                 </div>
-              </div>
+              @endforeach
             </div>
-            
-            <div class="col-lg-7">
-              <div class="row justify-content-end">
-                <div class="col-lg-11">
-                  <div class="row">
-                    @foreach ($features as $index => $feature)
-                      <div class="col-sm-6" data-aos="fade-up" data-aos-delay="{{ $index * 100 }}">
-                        <div class="icon text-center mb-4">
-                          <i class="{{ $feature['icon'] }} fs-4"></i>
-                        </div>
-                        <h3 class="fs-6 fw-bold mb-3">{{ $feature['title'] }}</h3>
-                        <p>{{ $feature['description'] }}</p>
-                      </div>
-                    @endforeach
-                  </div>
-                </div>
-              </div>
-            </div>
-          </div>
+          @endif
         </div>
       </div>
+      
+      {{-- Intro Image --}}
+      <div class="col-lg-6 {{ $reverseIntro ? 'order-1' : 'order-2' }}" 
+           data-aos="{{ $reverseIntro ? 'fade-right' : 'fade-left' }}" 
+           data-aos-delay="200">
+        <div class="intro-image">
+          <img src="{{ Vite::asset($introImage) }}" alt="{{ $introImageAlt }}" class="img-fluid">
+        </div>
+      </div>
+      
     </div>
+
+    {{-- Features Grid --}}
+    @if(!empty($features))
+      <div class="features-grid" style="grid-template-columns: repeat({{ $gridColumns }}, 1fr);">
+        @foreach($features as $index => $feature)
+          <div class="feature-item" data-aos="flip-up" data-aos-delay="{{ 250 + ($index * 50) }}">
+            <div class="feature-number">{{ $feature['number'] }}</div>
+            <div class="feature-content">
+              <div class="feature-icon">
+                <i class="{{ $feature['icon'] }}"></i>
+              </div>
+              <h4>{{ $feature['title'] }}</h4>
+              <p>{{ $feature['description'] }}</p>
+              
+              @if(!empty($feature['tags']))
+                <div class="feature-tags">
+                  @foreach($feature['tags'] as $tag)
+                    <span class="tag">{{ $tag }}</span>
+                  @endforeach
+                </div>
+              @endif
+            </div>
+          </div>
+        @endforeach
+      </div>
+    @endif
+
   </div>
 </section>

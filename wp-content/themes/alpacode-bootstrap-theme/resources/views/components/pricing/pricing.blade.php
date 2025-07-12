@@ -1,107 +1,133 @@
 @props([
-  'subtitle' => 'Pricing',
-  'title' => 'Plan for every budget',
-  'description' => 'Experience the future of finance with our secure, efficient, and user-friendly financial services',
+  'sectionTitle' => 'Pricing',
+  'sectionDescription' => 'Necessitatibus eius consequatur ex aliquid fuga eum quidem sint consectetur velit',
   'plans' => [
     [
-      'name' => 'Personal',
-      'description' => 'Choose a plan that fits your personal financial needs and start managing your finances more effectively.',
+      'name' => 'Starter',
+      'description' => 'For individuals just getting started',
+      'icon' => 'bi bi-box',
       'price' => [
-        'amount' => '$7',
-        'period' => '/ month'
+        'currency' => '$',
+        'amount' => '12',
+        'period' => '/month'
       ],
-      'buttonText' => 'Get Started',
+      'features' => [
+        ['text' => 'Nullam accumsan lorem', 'included' => true],
+        ['text' => 'Vestibulum auctor dapibus', 'included' => true],
+        ['text' => 'Nulla consequat massa', 'included' => true],
+        ['text' => 'In enim justo rhoncus ut', 'included' => false],
+        ['text' => 'Curabitur ullamcorper ultricies', 'included' => false]
+      ],
+      'buttonText' => 'Choose Plan',
       'buttonUrl' => '#',
-      'buttonClass' => 'btn',
-      'type' => 'simple', // simple or featured
-      'features' => []
+      'popular' => false,
+      'popularText' => null
     ],
     [
-      'name' => 'Business',
-      'description' => 'Optimize your business financial operations with our tailored business plans.',
+      'name' => 'Professional',
+      'description' => 'For small teams and growing businesses',
+      'icon' => 'bi bi-briefcase',
       'price' => [
-        'amount' => '$29',
-        'period' => '/ month'
+        'currency' => '$',
+        'amount' => '39',
+        'period' => '/month'
       ],
-      'buttonText' => 'Get Started',
-      'buttonUrl' => '#',
-      'buttonClass' => 'btn btn-white hover-outline',
-      'type' => 'featured',
-      'featuresTitle' => 'Features',
       'features' => [
-        'Personalized financial insights and reports',
-        'Priority customer support',
-        'Access to exclusive investment opportunities',
-        'AI-driven financial recommendations'
-      ]
+        ['text' => 'Donec quam felis ultricies', 'included' => true],
+        ['text' => 'Nam eget dui etiam rhoncus', 'included' => true],
+        ['text' => 'Maecenas tempus tellus', 'included' => true],
+        ['text' => 'Donec pede justo fringilla', 'included' => true],
+        ['text' => 'Cras dapibus vivamus', 'included' => false]
+      ],
+      'buttonText' => 'Choose Plan',
+      'buttonUrl' => '#',
+      'popular' => true,
+      'popularText' => 'Most Popular'
+    ],
+    [
+      'name' => 'Enterprise',
+      'description' => 'For large organizations and corporations',
+      'icon' => 'bi bi-building',
+      'price' => [
+        'currency' => '$',
+        'amount' => '79',
+        'period' => '/month'
+      ],
+      'features' => [
+        ['text' => 'Etiam sit amet orci eget', 'included' => true],
+        ['text' => 'Pellentesque posuere vulputate', 'included' => true],
+        ['text' => 'Quisque rutrum aenean', 'included' => true],
+        ['text' => 'Fusce vulputate eleifend', 'included' => true],
+        ['text' => 'Phasellus viverra nulla', 'included' => true]
+      ],
+      'buttonText' => 'Choose Plan',
+      'buttonUrl' => '#',
+      'popular' => false,
+      'popularText' => null
     ]
-  ]
+  ],
+  'includedIcon' => 'bi bi-check-circle-fill',
+  'excludedIcon' => 'bi bi-x-circle-fill'
 ])
 
-<section class="section pricing__v2" id="pricing">
-  <div class="container">
-    {{-- Header Section --}}
-    <div class="row mb-5">
-      <div class="col-md-5 mx-auto text-center">
-        <span class="subtitle text-uppercase mb-3" data-aos="fade-up" data-aos-delay="0">{{ $subtitle }}</span>
-        <h2 class="mb-3" data-aos="fade-up" data-aos-delay="100">{{ $title }}</h2>
-        <p data-aos="fade-up" data-aos-delay="200">{{ $description }}</p>
-      </div>
-    </div>
+<section id="pricing" class="pricing section">
+  {{-- Section Title --}}
+  <div class="container section-title" data-aos="fade-up">
+    <h2>{{ $sectionTitle }}</h2>
+    <p>{{ $sectionDescription }}</p>
+  </div>
 
-    {{-- Pricing Plans --}}
-    <div class="row">
+  <div class="container" data-aos="fade-up" data-aos-delay="100">
+    <div class="row gy-4">
+      
       @foreach($plans as $index => $plan)
-        @if($plan['type'] === 'simple')
-          <div class="col-md-4 mb-4 mb-md-0" data-aos="fade-up" data-aos-delay="{{ 300 + ($index * 100) }}">
-            <div class="p-5 rounded-4 price-table h-100">
+        <div class="col-lg-4 col-md-6" data-aos="zoom-in" data-aos-delay="{{ 200 + ($index * 100) }}">
+          <div class="pricing-card {{ $plan['popular'] ? 'popular' : '' }}">
+            
+            {{-- Popular Tag --}}
+            @if($plan['popular'] && $plan['popularText'])
+              <div class="popular-tag">{{ $plan['popularText'] }}</div>
+            @endif
+            
+            {{-- Plan Header --}}
+            <div class="plan-header">
+              <div class="plan-icon">
+                <i class="{{ $plan['icon'] }}"></i>
+              </div>
               <h3>{{ $plan['name'] }}</h3>
               <p>{{ $plan['description'] }}</p>
-              <div class="price mb-4">
-                <strong>{{ $plan['price']['amount'] }}</strong>
-                <span>{{ $plan['price']['period'] }}</span>
-              </div>
-              <div>
-                <a class="{{ $plan['buttonClass'] }}" href="{{ $plan['buttonUrl'] }}">{{ $plan['buttonText'] }}</a>
+            </div>
+            
+            {{-- Plan Pricing --}}
+            <div class="plan-pricing">
+              <div class="price">
+                <span class="currency">{{ $plan['price']['currency'] }}</span>
+                <span class="amount">{{ $plan['price']['amount'] }}</span>
+                <span class="period">{{ $plan['price']['period'] }}</span>
               </div>
             </div>
-          </div>
-        @elseif($plan['type'] === 'featured')
-          <div class="col-md-8" data-aos="fade-up" data-aos-delay="{{ 300 + ($index * 100) }}">
-            <div class="p-5 rounded-4 price-table popular h-100">
-              <div class="row">
-                <div class="col-md-6">
-                  <h3 class="mb-3">{{ $plan['name'] }}</h3>
-                  <p>{{ $plan['description'] }}</p>
-                  <div class="price mb-4">
-                    <strong class="me-1">{{ $plan['price']['amount'] }}</strong>
-                    <span>{{ $plan['price']['period'] }}</span>
-                  </div>
-                  <div>
-                    <a class="{{ $plan['buttonClass'] }}" href="{{ $plan['buttonUrl'] }}">{{ $plan['buttonText'] }}</a>
-                  </div>
-                </div>
-                
-                @if(!empty($plan['features']))
-                  <div class="col-md-6 pricing-features">
-                    <h4 class="text-uppercase fw-bold mb-3">{{ $plan['featuresTitle'] ?? 'Features' }}</h4>
-                    <ul class="list-unstyled d-flex flex-column gap-3">
-                      @foreach($plan['features'] as $feature)
-                        <li class="d-flex gap-2 align-items-start mb-0">
-                          <span class="icon rounded-circle position-relative mt-1">
-                            <i class="bi bi-check"></i>
-                          </span>
-                          <span>{{ $feature }}</span>
-                        </li>
-                      @endforeach
-                    </ul>
-                  </div>
-                @endif
-              </div>
+            
+            {{-- Plan Features --}}
+            <div class="plan-features">
+              <ul>
+                @foreach($plan['features'] as $feature)
+                  <li class="{{ $feature['included'] ? '' : 'disabled' }}">
+                    <i class="{{ $feature['included'] ? $includedIcon : $excludedIcon }}"></i> 
+                    {{ $feature['text'] }}
+                  </li>
+                @endforeach
+              </ul>
             </div>
+            
+            {{-- Plan CTA --}}
+            <div class="plan-cta">
+              <a href="{{ $plan['buttonUrl'] }}" class="btn-plan">{{ $plan['buttonText'] }}</a>
+            </div>
+            
           </div>
-        @endif
+        </div>
       @endforeach
+      
     </div>
   </div>
 </section>

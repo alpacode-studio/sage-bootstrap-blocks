@@ -1,72 +1,99 @@
 @props([
-  'subtitle' => 'About us',
-  'title' => 'Experience the future of finance with our secure, efficient, and user-friendly financial services',
-  'description' => [
-    'Founded with the vision of revolutionizing the financial industry, we are a leading fintech company dedicated to providing innovative and secure financial solutions.',
-    'Our cutting-edge platform ensures your transactions are safe, streamlined, and easy to manage, empowering you to take control of your financial journey with confidence and convenience.'
+  'title' => 'Our Story',
+  'subtitle' => 'Crafting innovative solutions since 2010',
+  'description' => 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Proin vel mauris in magna fringilla finibus. Suspendisse potenti. Integer ut fringilla mi, a aliquam risus. Maecenas ac nibh magna. Aenean fringilla lobortis ex, sit amet iaculis eros facilisis nec.',
+  'image' => 'resources/images/about/about-portrait-7.webp',
+  'imageAlt' => 'About Us Image',
+  'features' => [
+    [
+      'icon' => 'bi bi-award',
+      'title' => 'Excellence',
+      'description' => 'Lorem ipsum dolor sit amet, consectetur adipiscing elit.'
+    ],
+    [
+      'icon' => 'bi bi-lightbulb',
+      'title' => 'Innovation',
+      'description' => 'Proin vel mauris in magna fringilla finibus.'
+    ],
+    [
+      'icon' => 'bi bi-people',
+      'title' => 'Community',
+      'description' => 'Suspendisse potenti. Integer ut fringilla mi.'
+    ],
+    [
+      'icon' => 'bi bi-graph-up-arrow',
+      'title' => 'Growth',
+      'description' => 'Maecenas ac nibh magna. Aenean fringilla lobortis ex.'
+    ]
   ],
-  'valuesTitle' => 'Key Values and Vision',
-  'values' => [
-    'Innovation',
-    'Security',
-    'User-Centric Design',
-    'Transparency',
-    'Empowerment'
+  'primaryAction' => [
+    'label' => 'Learn More',
+    'url' => '#'
   ],
-  'image' => 'resources/images/about_2-min.jpg',
-  'imageAlt' => 'About us image',
-  'missionTitle' => 'Mission Statement',
-  'missionDescription' => 'Our mission is to empower individuals and businesses by delivering secure, efficient, and user-friendly financial services.',
-  'missionIcon' => 'bi bi-lightbulb'
+  'secondaryAction' => [
+    'label' => 'Contact Us',
+    'url' => '#'
+  ],
+  'imageFirst' => false
 ])
 
-<section class="about__v4 section" id="about">
-  <div class="container">
-    <div class="row">
-      <div class="col-md-6 order-md-2">
-        <div class="row justify-content-end">
-          <div class="col-md-11 mb-4 mb-md-0">
-            <span class="subtitle text-uppercase mb-3" data-aos="fade-up" data-aos-delay="0">{{ $subtitle }}</span>
-            <h2 class="mb-4" data-aos="fade-up" data-aos-delay="100">{{ $title }}</h2>
-            
-            <div data-aos="fade-up" data-aos-delay="200">
-              @foreach ($description as $paragraph)
-                <p>{{ $paragraph }}</p>
-              @endforeach
-            </div>
+<section id="about" class="about section">
+  <div class="container" data-aos="fade-up" data-aos-delay="100">
+    <div class="row align-items-center justify-content-between g-lg-5">
+      
+      {{-- Image Column --}}
+      <div class="col-lg-6 {{ $imageFirst ? 'order-1' : 'order-2' }}" 
+           data-aos="{{ $imageFirst ? 'fade-left' : 'fade-right' }}" 
+           data-aos-delay="200">
+        <div class="image-wrapper">
+          <img src="{{ Vite::asset($image) }}" class="img-fluid rounded" alt="{{ $imageAlt }}">
+        </div>
+      </div>
 
-            @if (!empty($values))
-              <h4 class="small fw-bold mt-4 mb-3" data-aos="fade-up" data-aos-delay="300">{{ $valuesTitle }}</h4>
-              <ul class="d-flex flex-row flex-wrap list-unstyled gap-3 features" data-aos="fade-up" data-aos-delay="400">
-                @foreach ($values as $value)
-                  <li class="d-flex align-items-center gap-2">
-                    <span class="icon rounded-circle text-center">
-                      <i class="bi bi-check"></i>
-                    </span>
-                    <span class="text">{{ $value }}</span>
-                  </li>
+      {{-- Content Column --}}
+      <div class="col-lg-6 {{ $imageFirst ? 'order-2' : 'order-1' }}" 
+           data-aos="{{ $imageFirst ? 'fade-right' : 'fade-left' }}" 
+           data-aos-delay="300">
+        <div class="content">
+          <h2 class="mb-4">{{ $title }}</h2>
+          <h5 class="mb-4">{{ $subtitle }}</h5>
+          
+          <p>{{ $description }}</p>
+
+          @if(!empty($features))
+            <div class="features-list mt-5" data-aos="fade-up" data-aos-delay="400">
+              <div class="row g-4">
+                @foreach($features as $feature)
+                  <div class="col-md-6">
+                    <div class="feature-item">
+                      <i class="{{ $feature['icon'] }}"></i>
+                      <h5>{{ $feature['title'] }}</h5>
+                      <p>{{ $feature['description'] }}</p>
+                    </div>
+                  </div>
                 @endforeach
-              </ul>
-            @endif
-          </div>
+              </div>
+            </div>
+          @endif
+
+          @if($primaryAction || $secondaryAction)
+            <div class="mt-5" data-aos="fade-up" data-aos-delay="600">
+              @if($primaryAction)
+                <a href="{{ $primaryAction['url'] }}" class="btn btn-primary me-3">
+                  {{ $primaryAction['label'] }}
+                </a>
+              @endif
+              
+              @if($secondaryAction)
+                <a href="{{ $secondaryAction['url'] }}" class="btn btn-outline-primary">
+                  {{ $secondaryAction['label'] }}
+                </a>
+              @endif
+            </div>
+          @endif
         </div>
       </div>
       
-      <div class="col-md-6"> 
-        <div class="img-wrap position-relative">
-          <img class="img-fluid rounded-4" src="{{ Vite::asset($image) }}" alt="{{ $imageAlt }}" data-aos="fade-up" data-aos-delay="0">
-          
-          <div class="mission-statement p-4 rounded-4 d-flex gap-4" data-aos="fade-up" data-aos-delay="100">
-            <div class="mission-icon text-center rounded-circle">
-              <i class="{{ $missionIcon }} fs-4"></i>
-            </div>
-            <div>
-              <h3 class="text-uppercase fw-bold">{{ $missionTitle }}</h3>
-              <p class="fs-5 mb-0">{{ $missionDescription }}</p>
-            </div>
-          </div>
-        </div>
-      </div>
     </div>
   </div>
 </section>

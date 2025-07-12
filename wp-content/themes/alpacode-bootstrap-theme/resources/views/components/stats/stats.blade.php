@@ -1,66 +1,89 @@
 @props([
+  'backgroundClass' => 'light-background',
+  'avatars' => [
+    [
+      'image' => 'resources/images/person/person-m-2.webp',
+      'alt' => 'Avatar 1'
+    ],
+    [
+      'image' => 'resources/images/person/person-m-3.webp',
+      'alt' => 'Avatar 2'
+    ],
+    [
+      'image' => 'resources/images/person/person-f-5.webp',
+      'alt' => 'Avatar 3'
+    ],
+    [
+      'image' => 'resources/images/person/person-m-5.webp',
+      'alt' => 'Avatar 4'
+    ]
+  ],
   'stats' => [
     [
-      'number' => 10,
-      'suffix' => 'K+',
-      'label' => 'Customer Satisfaction',
-      'duration' => 2,
+      'number' => 185,
+      'suffix' => '+',
+      'label' => 'Nemo enim ipsam',
+      'duration' => 1,
       'start' => 0
     ],
     [
-      'number' => 200,
-      'suffix' => '%+',
-      'label' => 'Revenue Increase',
-      'duration' => 2,
+      'number' => 32,
+      'suffix' => 'K',
+      'label' => 'Voluptatem sequi',
+      'duration' => 1,
       'start' => 0
     ],
     [
-      'number' => 20,
-      'suffix' => 'x',
-      'label' => 'Business Growth',
-      'duration' => 2,
+      'number' => 128,
+      'suffix' => '+',
+      'label' => 'Dolor sit consectetur',
+      'duration' => 1,
       'start' => 0
     ]
   ],
-  'showBorders' => true
+  'showAvatars' => true,
+  'reverseLayout' => false
 ])
 
-<section class="stats__v3 section">
-  <div class="container">
-    <div class="row">
-      <div class="col-12">
-        <div class="d-flex flex-wrap content rounded-4" data-aos="fade-up" data-aos-delay="0">
-          
-          {{-- Decorative rounded borders --}}
-          @if($showBorders)
-            <div class="rounded-borders">
-              <div class="rounded-border-1"></div>
-              <div class="rounded-border-2"></div>
-              <div class="rounded-border-3"></div>
-            </div>
-          @endif
+<section id="stats" class="stats section {{ $backgroundClass }}">
+  <div class="container" data-aos="fade-up" data-aos-delay="100">
+    <div class="row align-items-center">
+      
+      {{-- Avatars Column --}}
+      @if($showAvatars && !empty($avatars))
+        <div class="col-lg-4 {{ $reverseLayout ? 'order-2' : 'order-1' }}" 
+             data-aos="fade-up" 
+             data-aos-delay="200">
+          <div class="avatars d-flex align-items-center">
+            @foreach($avatars as $avatar)
+              <img src="{{ Vite::asset($avatar['image']) }}" 
+                   alt="{{ $avatar['alt'] }}" 
+                   class="rounded-circle" 
+                   loading="lazy">
+            @endforeach
+          </div>
+        </div>
+      @endif
 
-          {{-- Stats Items --}}
+      {{-- Stats Column --}}
+      <div class="col-lg-{{ $showAvatars ? '8' : '12' }} {{ $reverseLayout ? 'order-1' : 'order-2' }}">
+        <div class="row counters">
           @foreach($stats as $index => $stat)
-            <div class="col-12 col-sm-6 col-md-4 mb-4 mb-md-0 text-center" 
+            <div class="col-md-{{ $showAvatars ? '4' : (12 / count($stats)) }}" 
                  data-aos="fade-up" 
-                 data-aos-delay="{{ 100 + ($index * 100) }}">
-              <div class="stat-item">
-                <h3 class="fs-1 fw-bold">
-                  <span class="purecounter" 
-                        data-purecounter-start="{{ $stat['start'] ?? 0 }}" 
-                        data-purecounter-end="{{ $stat['number'] }}" 
-                        data-purecounter-duration="{{ $stat['duration'] ?? 2 }}">
-                    {{ $stat['start'] ?? 0 }}
-                  </span>
-                  <span>{{ $stat['suffix'] ?? '' }}</span>
-                </h3>
-                <p class="mb-0">{{ $stat['label'] }}</p>
-              </div>
+                 data-aos-delay="{{ 300 + ($index * 100) }}">
+              <h2>
+                <span data-purecounter-start="{{ $stat['start'] }}" 
+                      data-purecounter-end="{{ $stat['number'] }}" 
+                      data-purecounter-duration="{{ $stat['duration'] }}" 
+                      class="purecounter">{{ $stat['start'] }}</span>{{ $stat['suffix'] }}
+              </h2>
+              <p>{{ $stat['label'] }}</p>
             </div>
           @endforeach
         </div>
       </div>
+      
     </div>
   </div>
 </section>

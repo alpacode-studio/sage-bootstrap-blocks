@@ -1,162 +1,177 @@
 @props([
-  'newsletter' => [
-    'title' => 'Join our newsletter',
-    'description' => 'Stay updated with our latest templates and offers—join our newsletter today!',
-    'placeholder' => 'Email your email',
-    'buttonText' => 'Subscribe',
-    'action' => '#',
-    'method' => 'POST'
-  ],
-  'about' => [
-    'title' => 'About',
-    'description' => 'Utilize our tools to develop your concepts and bring your vision to life. Once complete, effortlessly share your creations.'
-  ],
-  'links' => [
-    [
-      'title' => 'Company',
-      'items' => [
-        ['label' => 'Leadership', 'url' => 'page-about.html'],
-        ['label' => 'Careers', 'url' => 'page-careers.html', 'badge' => 'we\'re hiring'],
-        ['label' => 'Case Studies', 'url' => 'page-case-studies.html'],
-        ['label' => 'Terms & Conditions', 'url' => 'page-terms-conditions.html'],
-        ['label' => 'Privacy Policy', 'url' => 'page-privacy-policy.html'],
-        ['label' => '404 page', 'url' => 'page-404.html']
-      ]
-    ],
-    [
-      'title' => 'Accounts',
-      'items' => [
-        ['label' => 'Register', 'url' => 'page-signup.html'],
-        ['label' => 'Sign in', 'url' => 'page-signin.html'],
-        ['label' => 'Forgot Password', 'url' => 'page-forgot-password.html'],
-        ['label' => 'Coming soon', 'url' => 'page-coming-soon.html'],
-        ['label' => 'Portfolio Masonry', 'url' => 'page-portfolio-masonry.html']
-      ]
-    ]
+  'backgroundClass' => 'light-background',
+  'logo' => [
+    'text' => 'MyWebsite',
+    'url' => 'index.html',
+    'image' => null // Optional: 'resources/images/logo.svg'
   ],
   'contact' => [
-    'title' => 'Contact',
-    'items' => [
-      [
-        'icon' => 'bi bi-geo-alt-fill',
-        'text' => '123 Main Street Apt 4B Springfield, <br> IL 62701 United States',
-        'type' => 'address'
-      ],
-      [
-        'icon' => 'bi bi-envelope-fill',
-        'text' => 'info@mydomain.com',
-        'url' => 'mailto:info@mydomain.com',
-        'type' => 'email'
-      ],
-      [
-        'icon' => 'bi bi-telephone-fill',
-        'text' => '+1 (234) 5678 9900',
-        'url' => 'tel://+123456789900',
-        'type' => 'phone'
-      ],
-      [
-        'icon' => 'bi bi-globe',
-        'text' => 'FreeBootstrap.net',
-        'url' => 'https://freebootstrap.net',
-        'type' => 'website'
+    'address' => [
+      'A108 Adam Street',
+      'New York, NY 535022'
+    ],
+    'phone' => '+1 5589 55488 55',
+    'email' => 'info@example.com'
+  ],
+  'linkColumns' => [
+    [
+      'title' => 'Useful Links',
+      'links' => [
+        ['label' => 'Home', 'url' => '#'],
+        ['label' => 'About us', 'url' => '#'],
+        ['label' => 'Services', 'url' => '#'],
+        ['label' => 'Terms of service', 'url' => '#'],
+        ['label' => 'Privacy policy', 'url' => '#']
+      ]
+    ],
+    [
+      'title' => 'Our Services',
+      'links' => [
+        ['label' => 'Web Design', 'url' => '#'],
+        ['label' => 'Web Development', 'url' => '#'],
+        ['label' => 'Product Management', 'url' => '#'],
+        ['label' => 'Marketing', 'url' => '#'],
+        ['label' => 'Graphic Design', 'url' => '#']
+      ]
+    ],
+    [
+      'title' => 'Hic solutasetp',
+      'links' => [
+        ['label' => 'Molestiae accusamus iure', 'url' => '#'],
+        ['label' => 'Excepturi dignissimos', 'url' => '#'],
+        ['label' => 'Suscipit distinctio', 'url' => '#'],
+        ['label' => 'Dilecta', 'url' => '#'],
+        ['label' => 'Sit quas consectetur', 'url' => '#']
+      ]
+    ],
+    [
+      'title' => 'Nobis illum',
+      'links' => [
+        ['label' => 'Ipsam', 'url' => '#'],
+        ['label' => 'Laudantium dolorum', 'url' => '#'],
+        ['label' => 'Dinera', 'url' => '#'],
+        ['label' => 'Trodelas', 'url' => '#'],
+        ['label' => 'Flexo', 'url' => '#']
       ]
     ]
   ],
+  'copyright' => [
+    'company' => 'MyWebsite',
+    'text' => 'All Rights Reserved'
+  ],
   'credits' => [
-    'companyName' => 'Nova',
-    'designedBy' => [
-      'text' => 'FreeBootstrap.net',
-      'url' => 'https://freebootstrap.net'
+    'show' => true,
+    'text' => 'Designed by',
+    'link' => [
+      'label' => 'BootstrapMade',
+      'url' => 'https://bootstrapmade.com/'
+    ]
+  ],
+  'socialLinks' => [
+    [
+      'icon' => 'bi bi-twitter-x',
+      'url' => '',
+      'label' => 'Twitter'
     ],
-    'distributedBy' => [
-      'text' => 'ThemeWagon',
-      'url' => 'https://themewagon.com'
+    [
+      'icon' => 'bi bi-facebook',
+      'url' => '',
+      'label' => 'Facebook'
+    ],
+    [
+      'icon' => 'bi bi-instagram',
+      'url' => '',
+      'label' => 'Instagram'
+    ],
+    [
+      'icon' => 'bi bi-linkedin',
+      'url' => '',
+      'label' => 'LinkedIn'
     ]
   ]
 ])
 
-<footer class="footer pt-5 pb-5">
-  <div class="container">
-    {{-- Newsletter Section --}}
-    <div class="row mb-5 pb-4">
-      <div class="col-md-7">
-        <h2 class="fs-5">{{ $newsletter['title'] }}</h2>
-        <p>{{ $newsletter['description'] }}</p>
-      </div>
-      <div class="col-md-5">
-        <form class="d-flex gap-2" action="{{ $newsletter['action'] }}" method="{{ $newsletter['method'] }}">
-          @if($newsletter['method'] === 'POST')
-            @csrf
-          @endif
-          <input class="form-control" type="email" placeholder="{{ $newsletter['placeholder'] }}" required>
-          <button class="btn btn-primary fs-6" type="submit">{{ $newsletter['buttonText'] }}</button>
-        </form>
-      </div>
-    </div>
-
-    {{-- Main Footer Content --}}
-    <div class="row justify-content-between mb-5 g-xl-5">
-      {{-- About Section --}}
-      <div class="col-md-4 mb-5 mb-lg-0">
-        <h3 class="mb-3">{{ $about['title'] }}</h3>
-        <p class="mb-4">{{ $about['description'] }}</p>
-      </div>
-
-      {{-- Links and Contact Section --}}
-      <div class="col-md-7">
-        <div class="row g-2">
-          {{-- Dynamic Link Columns --}}
-          @foreach ($links as $linkGroup)
-            <div class="col-md-6 col-lg-4 mb-4 mb-lg-0">
-              <h3 class="mb-3">{{ $linkGroup['title'] }}</h3>
-              <ul class="list-unstyled">
-                @foreach ($linkGroup['items'] as $item)
-                  <li>
-                    <a href="{{ $item['url'] }}">
-                      {{ $item['label'] }}
-                      @if (isset($item['badge']))
-                        <span class="badge ms-1">{{ $item['badge'] }}</span>
-                      @endif
-                    </a>
-                  </li>
-                @endforeach
-              </ul>
-            </div>
-          @endforeach
-
-          {{-- Contact Section --}}
-          <div class="col-md-6 col-lg-4 mb-4 mb-lg-0 quick-contact">
-            <h3 class="mb-3">{{ $contact['title'] }}</h3>
-            @foreach ($contact['items'] as $contactItem)
-              @if ($contactItem['type'] === 'address')
-                <p class="d-flex mb-3">
-                  <i class="{{ $contactItem['icon'] }} me-3"></i>
-                  <span>{!! $contactItem['text'] !!}</span>
-                </p>
-              @else
-                <a class="d-flex mb-3" href="{{ $contactItem['url'] }}">
-                  <i class="{{ $contactItem['icon'] }} me-3"></i>
-                  <span>{{ $contactItem['text'] }}</span>
-                </a>
-              @endif
+<footer id="footer" class="footer {{ $backgroundClass }}">
+  
+  {{-- Footer Top --}}
+  <div class="footer-top">
+    <div class="container">
+      <div class="row gy-4">
+        
+        {{-- About/Contact Column --}}
+        <div class="col-lg-4 col-md-6 footer-about">
+          <a href="{{ $logo['url'] }}" class="logo d-flex align-items-center">
+            @if($logo['image'])
+              <img src="{{ Vite::asset($logo['image']) }}" alt="{{ $logo['text'] }}">
+            @endif
+            <span class="sitename">{{ $logo['text'] }}</span>
+          </a>
+          
+          <div class="footer-contact pt-3">
+            @foreach($contact['address'] as $addressLine)
+              <p>{{ $addressLine }}</p>
             @endforeach
+            
+            @if($contact['phone'])
+              <p class="mt-3">
+                <strong>Phone:</strong> 
+                <span>{{ $contact['phone'] }}</span>
+              </p>
+            @endif
+            
+            @if($contact['email'])
+              <p>
+                <strong>Email:</strong> 
+                <span>{{ $contact['email'] }}</span>
+              </p>
+            @endif
           </div>
         </div>
-      </div>
-    </div>
 
-    {{-- Credits Section --}}
-    <div class="row credits pt-3">
-      <div class="col-xl-8 text-center text-xl-start mb-3 mb-xl-0">
-        &copy;
-        <script>document.write(new Date().getFullYear());</script>
-        {{ $credits['companyName'] }}.
-        All rights reserved. Designed with <i class="bi bi-heart-fill text-danger"></i> by 
-        <a href="{{ $credits['designedBy']['url'] }}">{{ $credits['designedBy']['text'] }}</a>
-      </div>
-      <div class="col-xl-4 justify-content-start justify-content-xl-end quick-links d-flex flex-column flex-xl-row text-center text-xl-start gap-1">
-        Distributed by <a href="{{ $credits['distributedBy']['url'] }}" target="_blank">{{ $credits['distributedBy']['text'] }}</a>
+        {{-- Link Columns --}}
+        @foreach($linkColumns as $column)
+          <div class="col-lg-2 col-md-3 footer-links">
+            <h4>{{ $column['title'] }}</h4>
+            <ul>
+              @foreach($column['links'] as $link)
+                <li><a href="{{ $link['url'] }}">{{ $link['label'] }}</a></li>
+              @endforeach
+            </ul>
+          </div>
+        @endforeach
+
       </div>
     </div>
   </div>
+
+  {{-- Copyright Section --}}
+  <div class="copyright text-center">
+    <div class="container d-flex flex-column flex-lg-row justify-content-center justify-content-lg-between align-items-center">
+
+      <div class="d-flex flex-column align-items-center align-items-lg-start">
+        <div>
+          © Copyright <strong><span>{{ $copyright['company'] }}</span></strong>. {{ $copyright['text'] }}
+        </div>
+        
+        @if($credits['show'])
+          <div class="credits">
+            {{ $credits['text'] }} <a href="{{ $credits['link']['url'] }}">{{ $credits['link']['label'] }}</a>
+          </div>
+        @endif
+      </div>
+
+      {{-- Social Links --}}
+      @if(!empty($socialLinks))
+        <div class="social-links order-first order-lg-last mb-3 mb-lg-0">
+          @foreach($socialLinks as $social)
+            <a href="{{ $social['url'] }}" aria-label="{{ $social['label'] }}">
+              <i class="{{ $social['icon'] }}"></i>
+            </a>
+          @endforeach
+        </div>
+      @endif
+
+    </div>
+  </div>
+  
 </footer>

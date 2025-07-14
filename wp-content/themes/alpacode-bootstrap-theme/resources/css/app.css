@@ -1,14 +1,10 @@
-/* Import your complete Instant template styles FIRST */
-@import './instant.css';
-
-/* Import only essential CSS immediately */
+/* Import Bootstrap and libraries FIRST */
+@import 'bootstrap/dist/css/bootstrap.min.css';
+@import 'bootstrap-icons/font/bootstrap-icons.css';
 @import 'aos/dist/aos.css';
 
-/* Bootstrap Icons */
-@import 'bootstrap-icons/font/bootstrap-icons.css';
-
-/* Bootstrap - full version for JavaScript components to work */
-@import 'bootstrap/dist/css/bootstrap.min.css';
+/* Import your custom instant.css LAST so it overrides Bootstrap */
+@import './instant.css';
 
 /* Sage theme sources */
 @source "../views/";
@@ -23,7 +19,7 @@
   contain: layout;
 }
 
-/* Ensure Instant template styles take precedence over Bootstrap conflicts */
+/* Fix any Bootstrap grid conflicts */
 .features .features-grid {
   display: grid !important;
 }
@@ -32,7 +28,7 @@
   transition: all 0.3s ease !important;
 }
 
-/* Fix any responsive issues that Bootstrap might override */
+/* Fix responsive issues that Bootstrap might override */
 @media (max-width: 991px) {
   .features .features-grid {
     grid-template-columns: 1fr !important;

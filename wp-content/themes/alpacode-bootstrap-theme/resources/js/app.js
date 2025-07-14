@@ -31,36 +31,32 @@ window.GLightbox = GLightbox;
 window.Swiper = Swiper;
 window.Typed = Typed;
 
-// Handle PureCounter properly
-try {
-  import('@srexi/purecounterjs').then(module => {
-    // Try different export patterns
-    const PureCounter = module.default || module.PureCounter || module;
+// Simple PureCounter fix - just create a working version
+window.PureCounter = function(options = {}) {
+  const counters = document.querySelectorAll('.purecounter');
+  
+  counters.forEach(counter => {
+    const target = parseInt(counter.getAttribute('data-purecounter-end') || counter.textContent);
+    const duration = parseInt(counter.getAttribute('data-purecounter-duration') || 2000);
+    const start = parseInt(counter.getAttribute('data-purecounter-start') || 0);
     
-    if (typeof PureCounter === 'function') {
-      window.PureCounter = PureCounter;
-    } else {
-      // If it's not a constructor, create a wrapper
-      window.PureCounter = function(options) {
-        if (PureCounter && PureCounter.start) {
-          return PureCounter.start(options);
-        }
-        console.warn('PureCounter not available as constructor');
-      };
-    }
-  }).catch(error => {
-    console.warn('PureCounter not available:', error);
-    // Create a dummy PureCounter
-    window.PureCounter = function() { 
-      console.warn('PureCounter not loaded - feature disabled');
-    };
+    let current = start;
+    const increment = (target - start) / (duration / 16); // 60fps
+    
+    counter.textContent = current;
+    
+    const timer = setInterval(() => {
+      current += increment;
+      if (current >= target) {
+        current = target;
+        clearInterval(timer);
+      }
+      counter.textContent = Math.floor(current);
+    }, 16);
   });
-} catch (error) {
-  console.warn('PureCounter import failed:', error);
-  window.PureCounter = function() { 
-    console.warn('PureCounter not loaded - feature disabled');
-  };
-}
+  
+  console.log('✅ Custom PureCounter initialized');
+};
 
 // Import instant.js immediately
 import('./instant.js');

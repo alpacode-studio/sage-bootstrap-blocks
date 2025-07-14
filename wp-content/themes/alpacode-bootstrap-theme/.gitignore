@@ -2,6 +2,7 @@
 /vendor
 /vendors
 /public/*
+!/public/vendors
 !/public/.gitkeep
 .env
 npm-debug.log

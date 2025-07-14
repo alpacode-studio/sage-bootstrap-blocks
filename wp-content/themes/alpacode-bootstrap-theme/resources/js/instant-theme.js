@@ -146,3 +146,34 @@ function cleanupSwipers() {
     }
   });
 }
+
+/**
+   * Typed.js initialization for typing animation
+   * Use with: Hero section or any component with typing effect
+   * Requires: Typed.js library to be loaded
+   */
+  function initTypedAnimation(selector = '.typed') {
+    const selectTyped = document.querySelector(selector);
+    
+    if (selectTyped && typeof Typed !== 'undefined') {
+      let typed_strings = selectTyped.getAttribute('data-typed-items');
+      if (typed_strings) {
+        typed_strings = typed_strings.split(',');
+        return new Typed(selector, {
+          strings: typed_strings,
+          loop: true,
+          typeSpeed: 100,
+          backSpeed: 50,
+          backDelay: 2000
+        });
+      }
+    } else if (!selectTyped) {
+      console.warn(`Typed element with selector "${selector}" not found`);
+    } else {
+      console.warn('Typed.js library not loaded - typing animation disabled');
+    }
+    return null;
+  }
+
+  // Initialize when hero component mounts
+  const typedInstance = initTypedAnimation('.typed');

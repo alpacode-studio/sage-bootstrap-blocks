@@ -70,15 +70,13 @@
       window.scrollY > 100 ? scrollTop.classList.add('active') : scrollTop.classList.remove('active');
     }
   }
-  if (scrollTop) {
-    scrollTop.addEventListener('click', (e) => {
-      e.preventDefault();
-      window.scrollTo({
-        top: 0,
-        behavior: 'smooth'
-      });
+  scrollTop.addEventListener('click', (e) => {
+    e.preventDefault();
+    window.scrollTo({
+      top: 0,
+      behavior: 'smooth'
     });
-  }
+  });
 
   window.addEventListener('load', toggleScrollTop);
   document.addEventListener('scroll', toggleScrollTop);
@@ -87,89 +85,66 @@
    * Animation on scroll function and init
    */
   function aosInit() {
-    if (typeof window.AOS !== 'undefined') {
-      window.AOS.init({
-        duration: 600,
-        easing: 'ease-in-out',
-        once: true,
-        mirror: false
-      });
-    } else {
-      console.warn('AOS not loaded');
-    }
+    AOS.init({
+      duration: 600,
+      easing: 'ease-in-out',
+      once: true,
+      mirror: false
+    });
   }
   window.addEventListener('load', aosInit);
 
   /**
    * Initiate glightbox
    */
-  function initGLightbox() {
-    if (typeof window.GLightbox !== 'undefined') {
-      const glightbox = window.GLightbox({
-        selector: '.glightbox'
-      });
-    } else {
-      console.warn('GLightbox not loaded');
-    }
-  }
-  window.addEventListener('load', initGLightbox);
+  const glightbox = GLightbox({
+    selector: '.glightbox'
+  });
 
   /**
    * Initiate Pure Counter
    */
-  function initPureCounter() {
-    if (typeof window.PureCounter !== 'undefined') {
-      try {
-        new window.PureCounter();
-      } catch (error) {
-        console.warn('PureCounter error:', error);
-      }
+  try {
+    if (typeof PureCounter !== 'undefined' && PureCounter) {
+      new PureCounter();
     } else {
-      console.warn('PureCounter not loaded');
+      console.warn('PureCounter not available - counter animations disabled');
     }
+  } catch (error) {
+    console.warn('PureCounter failed to initialize:', error);
   }
-  window.addEventListener('load', initPureCounter);
 
   /**
    * Init typed.js
    */
-  function initTyped() {
-    const selectTyped = document.querySelector('.typed');
-    if (selectTyped && typeof window.Typed !== 'undefined') {
-      let typed_strings = selectTyped.getAttribute('data-typed-items');
-      if (typed_strings) {
-        typed_strings = typed_strings.split(',');
-        new window.Typed('.typed', {
-          strings: typed_strings,
-          loop: true,
-          typeSpeed: 100,
-          backSpeed: 50,
-          backDelay: 2000
-        });
-      }
-    }
+  const selectTyped = document.querySelector('.typed');
+  if (selectTyped) {
+    let typed_strings = selectTyped.getAttribute('data-typed-items');
+    typed_strings = typed_strings.split(',');
+    new Typed('.typed', {
+      strings: typed_strings,
+      loop: true,
+      typeSpeed: 100,
+      backSpeed: 50,
+      backDelay: 2000
+    });
   }
-  window.addEventListener('load', initTyped);
 
   /**
    * Init swiper sliders
    */
   function initSwiper() {
-    if (typeof window.Swiper !== 'undefined') {
-      document.querySelectorAll(".init-swiper").forEach(function(swiperElement) {
-        let config = JSON.parse(
-          swiperElement.querySelector(".swiper-config").innerHTML.trim()
-        );
+    document.querySelectorAll(".init-swiper").forEach(function(swiperElement) {
+      let config = JSON.parse(
+        swiperElement.querySelector(".swiper-config").innerHTML.trim()
+      );
 
-        if (swiperElement.classList.contains("swiper-tab")) {
-          initSwiperWithCustomPagination(swiperElement, config);
-        } else {
-          new window.Swiper(swiperElement, config);
-        }
-      });
-    } else {
-      console.warn('Swiper not loaded');
-    }
+      if (swiperElement.classList.contains("swiper-tab")) {
+        initSwiperWithCustomPagination(swiperElement, config);
+      } else {
+        new Swiper(swiperElement, config);
+      }
+    });
   }
 
   window.addEventListener("load", initSwiper);

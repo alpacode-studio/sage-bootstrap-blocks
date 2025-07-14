@@ -1,17 +1,14 @@
+/* Import your complete Instant template styles FIRST */
+@import './instant.css';
+
 /* Import only essential CSS immediately */
 @import 'aos/dist/aos.css';
-
-/* Bootstrap - import only what you need */
-/* @import 'bootstrap/dist/css/bootstrap-grid.min.css'; /* Grid system */
-/* @import 'bootstrap/dist/css/bootstrap-utilities.min.css'; /* Utilities */
-/* If you need full Bootstrap, uncomment this line instead: */
-@import 'bootstrap/dist/css/bootstrap.min.css';
 
 /* Bootstrap Icons */
 @import 'bootstrap-icons/font/bootstrap-icons.css';
 
-/* Import your complete Instant template styles */
-@import './instant.css';
+/* Bootstrap - full version for JavaScript components to work */
+@import 'bootstrap/dist/css/bootstrap.min.css';
 
 /* Sage theme sources */
 @source "../views/";
@@ -24,4 +21,20 @@
 
 .swiper-container {
   contain: layout;
+}
+
+/* Ensure Instant template styles take precedence over Bootstrap conflicts */
+.features .features-grid {
+  display: grid !important;
+}
+
+.services .services-grid .service-card {
+  transition: all 0.3s ease !important;
+}
+
+/* Fix any responsive issues that Bootstrap might override */
+@media (max-width: 991px) {
+  .features .features-grid {
+    grid-template-columns: 1fr !important;
+  }
 }

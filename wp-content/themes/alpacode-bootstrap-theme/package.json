@@ -8,12 +8,26 @@
   "scripts": {
     "dev": "vite",
     "build": "vite build",
+    "build:analyze": "vite build --mode analyze",
+    "preview": "vite preview",
     "translate": "npm run translate:pot && npm run translate:update",
     "translate:pot": "wp i18n make-pot . ./resources/lang/sage.pot --include=\"theme.json,patterns,app,resources\"",
     "translate:update": "for file in ./resources/lang/*.po; do wp i18n update-po ./resources/lang/sage.pot $file; done",
     "translate:compile": "npm run translate:mo && npm run translate:js",
     "translate:js": "wp i18n make-json ./resources/lang --pretty-print",
     "translate:mo": "wp i18n make-mo ./resources/lang ./resources/lang"
+  },
+  "dependencies": {
+    "aos": "^2.3.4",
+    "bootstrap": "^5.3.0",
+    "bootstrap-icons": "^1.11.0",
+    "glightbox": "^3.2.0",
+    "gsap": "^3.12.0",
+    "imagesloaded": "^5.0.0",
+    "isotope-layout": "^3.0.6",
+    "@srexi/purecounterjs": "^1.5.0",
+    "swiper": "^11.0.0",
+    "typed.js": "^2.1.0"
   },
   "devDependencies": {
     "@roots/vite-plugin": "^1.0.2",

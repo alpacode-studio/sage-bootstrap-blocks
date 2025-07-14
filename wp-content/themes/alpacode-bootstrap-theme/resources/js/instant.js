@@ -70,13 +70,15 @@
       window.scrollY > 100 ? scrollTop.classList.add('active') : scrollTop.classList.remove('active');
     }
   }
-  scrollTop.addEventListener('click', (e) => {
-    e.preventDefault();
-    window.scrollTo({
-      top: 0,
-      behavior: 'smooth'
+  if (scrollTop) {
+    scrollTop.addEventListener('click', (e) => {
+      e.preventDefault();
+      window.scrollTo({
+        top: 0,
+        behavior: 'smooth'
+      });
     });
-  });
+  }
 
   window.addEventListener('load', toggleScrollTop);
   document.addEventListener('scroll', toggleScrollTop);
@@ -85,58 +87,89 @@
    * Animation on scroll function and init
    */
   function aosInit() {
-    AOS.init({
-      duration: 600,
-      easing: 'ease-in-out',
-      once: true,
-      mirror: false
-    });
+    if (typeof window.AOS !== 'undefined') {
+      window.AOS.init({
+        duration: 600,
+        easing: 'ease-in-out',
+        once: true,
+        mirror: false
+      });
+    } else {
+      console.warn('AOS not loaded');
+    }
   }
   window.addEventListener('load', aosInit);
 
   /**
    * Initiate glightbox
    */
-  const glightbox = GLightbox({
-    selector: '.glightbox'
-  });
+  function initGLightbox() {
+    if (typeof window.GLightbox !== 'undefined') {
+      const glightbox = window.GLightbox({
+        selector: '.glightbox'
+      });
+    } else {
+      console.warn('GLightbox not loaded');
+    }
+  }
+  window.addEventListener('load', initGLightbox);
 
   /**
    * Initiate Pure Counter
    */
-  new PureCounter();
+  function initPureCounter() {
+    if (typeof window.PureCounter !== 'undefined') {
+      try {
+        new window.PureCounter();
+      } catch (error) {
+        console.warn('PureCounter error:', error);
+      }
+    } else {
+      console.warn('PureCounter not loaded');
+    }
+  }
+  window.addEventListener('load', initPureCounter);
 
   /**
    * Init typed.js
    */
-  const selectTyped = document.querySelector('.typed');
-  if (selectTyped) {
-    let typed_strings = selectTyped.getAttribute('data-typed-items');
-    typed_strings = typed_strings.split(',');
-    new Typed('.typed', {
-      strings: typed_strings,
-      loop: true,
-      typeSpeed: 100,
-      backSpeed: 50,
-      backDelay: 2000
-    });
+  function initTyped() {
+    const selectTyped = document.querySelector('.typed');
+    if (selectTyped && typeof window.Typed !== 'undefined') {
+      let typed_strings = selectTyped.getAttribute('data-typed-items');
+      if (typed_strings) {
+        typed_strings = typed_strings.split(',');
+        new window.Typed('.typed', {
+          strings: typed_strings,
+          loop: true,
+          typeSpeed: 100,
+          backSpeed: 50,
+          backDelay: 2000
+        });
+      }
+    }
   }
+  window.addEventListener('load', initTyped);
 
   /**
    * Init swiper sliders
    */
   function initSwiper() {
-    document.querySelectorAll(".init-swiper").forEach(function(swiperElement) {
-      let config = JSON.parse(
-        swiperElement.querySelector(".swiper-config").innerHTML.trim()
-      );
+    if (typeof window.Swiper !== 'undefined') {
+      document.querySelectorAll(".init-swiper").forEach(function(swiperElement) {
+        let config = JSON.parse(
+          swiperElement.querySelector(".swiper-config").innerHTML.trim()
+        );
 
-      if (swiperElement.classList.contains("swiper-tab")) {
-        initSwiperWithCustomPagination(swiperElement, config);
-      } else {
-        new Swiper(swiperElement, config);
-      }
-    });
+        if (swiperElement.classList.contains("swiper-tab")) {
+          initSwiperWithCustomPagination(swiperElement, config);
+        } else {
+          new window.Swiper(swiperElement, config);
+        }
+      });
+    } else {
+      console.warn('Swiper not loaded');
+    }
   }
 
   window.addEventListener("load", initSwiper);

@@ -59,6 +59,6 @@ window.PureCounter = function(options = {}) {
 };
 
 // Import instant.js immediately
-import('./instant.js');
+import('./instant-theme.js');
 
 console.log('✅ App.js loaded - libraries available globally');

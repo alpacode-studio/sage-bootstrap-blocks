@@ -77,3 +77,161 @@
     </div>
   </div>
 </section>
+
+<style>
+  /*--------------------------------------------------------------
+# Faq Section
+--------------------------------------------------------------*/
+.faq .faq-card {
+  height: 100%;
+  padding: 40px;
+  background-color: color-mix(in srgb, var(--default-color), transparent 96%);
+  border-radius: 8px;
+  border: 1px solid color-mix(in srgb, var(--default-color), transparent 90%);
+  text-align: center;
+}
+
+.faq .faq-card i {
+  font-size: 48px;
+  color: var(--accent-color);
+  margin-bottom: 20px;
+  display: block;
+}
+
+.faq .faq-card h3 {
+  font-size: 24px;
+  margin-bottom: 15px;
+}
+
+.faq .faq-card p {
+  margin-bottom: 25px;
+  font-size: 15px;
+  line-height: 24px;
+  color: color-mix(in srgb, var(--default-color), transparent 30%);
+}
+
+.faq .faq-card .btn-primary {
+  padding: 8px 20px;
+  font-size: 16px;
+  font-weight: 500;
+  border-radius: 50px;
+  background-color: var(--accent-color);
+  border-color: var(--accent-color);
+  color: var(--contrast-color);
+}
+
+.faq .faq-card .btn-primary:hover {
+  background-color: color-mix(in srgb, var(--accent-color), transparent 20%);
+  border-color: color-mix(in srgb, var(--accent-color), transparent 20%);
+}
+
+.faq .faq-list {
+  padding: 0;
+}
+
+.faq .faq-list .faq-item {
+  position: relative;
+  margin-bottom: 25px;
+  padding: 30px;
+  background-color: var(--surface-color);
+  border-radius: 8px;
+  border: 1px solid color-mix(in srgb, var(--default-color), transparent 90%);
+  cursor: pointer;
+}
+
+.faq .faq-list .faq-item:last-child {
+  margin-bottom: 0;
+}
+
+.faq .faq-list .faq-item h3 {
+  font-size: 18px;
+  line-height: 28px;
+  font-weight: 600;
+  padding-right: 40px;
+  margin-bottom: 0;
+  position: relative;
+  cursor: pointer;
+}
+
+.faq .faq-list .faq-item .faq-content {
+  display: grid;
+  grid-template-rows: 0fr;
+  transition: 0.3s ease-in-out;
+  visibility: hidden;
+  opacity: 0;
+}
+
+.faq .faq-list .faq-item .faq-content p {
+  margin-bottom: 0;
+  font-size: 15px;
+  line-height: 24px;
+  overflow: hidden;
+}
+
+.faq .faq-list .faq-item .faq-toggle {
+  position: absolute;
+  right: 30px;
+  top: 30px;
+  font-size: 24px;
+  color: var(--accent-color);
+  transition: transform 0.2s ease;
+}
+
+.faq .faq-list .faq-item.faq-active h3 {
+  color: var(--accent-color);
+}
+
+.faq .faq-list .faq-item.faq-active .faq-content {
+  grid-template-rows: 1fr;
+  visibility: visible;
+  opacity: 1;
+  padding-top: 15px;
+}
+
+.faq .faq-list .faq-item.faq-active .faq-toggle {
+  transform: rotate(45deg);
+}
+
+@media (max-width: 768px) {
+  .faq .faq-list .faq-item {
+    padding: 20px;
+  }
+
+  .faq .faq-list .faq-item h3 {
+    font-size: 16px;
+    line-height: 24px;
+  }
+
+  .faq .faq-list .faq-item .faq-toggle {
+    right: 20px;
+    top: 20px;
+    font-size: 20px;
+  }
+}
+</style>
+
+<script>
+  /**
+ * FAQ accordion functionality
+ * Use with: FAQ component
+ */
+function initFAQAccordion(containerSelector = '.faq-list') {
+  const container = document.querySelector(containerSelector);
+  if (!container) return;
+
+  const faqItems = container.querySelectorAll('.faq-item h3, .faq-item .faq-toggle, .faq-item .faq-header');
+  
+  faqItems.forEach((faqItem) => {
+    faqItem.addEventListener('click', (e) => {
+      e.preventDefault();
+      const faqItemContainer = faqItem.closest('.faq-item');
+      if (faqItemContainer) {
+        faqItemContainer.classList.toggle('faq-active');
+      }
+    });
+  });
+}
+
+// Initialize when FAQ component mounts
+initFAQAccordion();
+</script>

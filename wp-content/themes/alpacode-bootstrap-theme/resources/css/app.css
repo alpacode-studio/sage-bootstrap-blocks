@@ -4,13 +4,13 @@
 @import 'aos/dist/aos.css';
 
 /* Import your custom instant.css LAST so it overrides Bootstrap */
-@import './instant.css';
+@import './instant-theme.css';
 
 /* Sage theme sources */
 @source "../views/";
 @source "../../app/";
 
-/* Performance optimizations */
+/* PERFORMANCE OPT */
 .isotope-container {
   contain: layout style;
 }
@@ -19,7 +19,7 @@
   contain: layout;
 }
 
-/* Fix any Bootstrap grid conflicts */
+/* BOOTSTRAP CONFLICTS */
 .features .features-grid {
   display: grid !important;
 }
@@ -28,9 +28,9 @@
   transition: all 0.3s ease !important;
 }
 
-/* Fix responsive issues that Bootstrap might override */
 @media (max-width: 991px) {
   .features .features-grid {
     grid-template-columns: 1fr !important;
   }
 }
+

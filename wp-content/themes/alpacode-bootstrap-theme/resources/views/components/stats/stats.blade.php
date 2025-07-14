@@ -87,3 +87,107 @@
     </div>
   </div>
 </section>
+
+<style>
+  /*--------------------------------------------------------------
+# Stats Section
+--------------------------------------------------------------*/
+.stats .avatars {
+  position: relative;
+}
+
+.stats .avatars img {
+  width: 60px;
+  height: 60px;
+  border: 3px solid var(--accent-color);
+  margin-right: -15px;
+  transition: transform 0.3s ease;
+}
+
+.stats .avatars img:hover {
+  transform: translateY(-5px);
+  z-index: 2;
+}
+
+.stats .counters h2 {
+  color: var(--heading-color);
+  font-size: 48px;
+  font-weight: 700;
+  margin-bottom: 10px;
+}
+
+.stats .counters h2 span {
+  display: inline-block;
+}
+
+.stats .counters p {
+  color: var(--default-color);
+  font-size: 18px;
+  margin: 0;
+  opacity: 0.9;
+}
+
+@media (max-width: 991px) {
+  .stats .row {
+    text-align: center;
+  }
+
+  .stats .avatars {
+    justify-content: center;
+    margin-bottom: 40px;
+  }
+
+  .stats .counters h2 {
+    font-size: 36px;
+  }
+
+  .stats .counters p {
+    font-size: 16px;
+  }
+
+  .stats .counters .col-md-4 {
+    margin-bottom: 30px;
+  }
+
+  .stats .counters .col-md-4:last-child {
+    margin-bottom: 0;
+  }
+}
+
+@media (max-width: 576px) {
+  .stats {
+    padding: 60px 0;
+  }
+
+  .stats .avatars {
+    flex-wrap: wrap;
+    justify-content: center;
+  }
+
+  .stats .avatars img {
+    margin: 0 -8px;
+  }
+}
+</style>
+
+<script>
+  /**
+   * Pure Counter initialization for animated counters
+   * Use with: Stats/Counter components
+   * Requires: PureCounter library to be loaded
+   */
+  function initCounterAnimations() {
+    try {
+      if (typeof PureCounter !== 'undefined' && PureCounter) {
+        new PureCounter();
+      } else {
+        console.warn('PureCounter not available - counter animations disabled');
+      }
+    } catch (error) {
+      console.warn('PureCounter failed to initialize:', error);
+    }
+  }
+
+  // Initialize when counter component mounts
+  initCounterAnimations();
+</script>

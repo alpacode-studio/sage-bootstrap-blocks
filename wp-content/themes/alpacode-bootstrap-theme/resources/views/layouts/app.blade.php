@@ -38,9 +38,11 @@
     @php(wp_body_open())
 
     <div id="app">
+      <!--
       <a class="sr-only focus:not-sr-only" href="#main">
         {{ __('Skip to content', 'sage') }}
       </a>
+      -->
 
       @include('sections.header')
 
@@ -54,13 +56,9 @@
         </aside>
       @endif
 
+      @include('components.scroll_top_button')
       @include('sections.footer')
     </div>
-
-    <!-- Scroll Top -->
-    <a href="#" id="scroll-top" class="scroll-top d-flex align-items-center justify-content-center">
-      <i class="bi bi-arrow-up-short"></i>
-    </a>
 
     @stack('scripts')
     

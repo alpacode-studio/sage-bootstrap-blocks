@@ -56,8 +56,6 @@
         </aside>
       @endif
 
-      @include('components.scroll_top_button')
-      @include('sections.footer')
     </div>
 
     @stack('scripts')

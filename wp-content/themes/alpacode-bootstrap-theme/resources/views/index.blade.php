@@ -19,6 +19,7 @@
 --}}
 
 <x-header.header />
+<x-scroll_top_button />
 <x-hero.hero />
 <x-about.about />
 <x-features.features />

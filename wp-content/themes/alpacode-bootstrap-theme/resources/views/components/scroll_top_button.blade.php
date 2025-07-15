@@ -38,6 +38,7 @@
     bottom: 15px;
     }
 </style>
+
 <script>
     /**
      * Scroll to top button functionality

@@ -1,12 +1,12 @@
 import { defineConfig } from 'vite'
-import tailwindcss from '@tailwindcss/vite';
+// import tailwindcss from '@tailwindcss/vite';
 import laravel from 'laravel-vite-plugin'
 import { wordpressPlugin, wordpressThemeJson } from '@roots/vite-plugin';
 
 export default defineConfig({
   base: '/app/themes/sage/public/build/',
   plugins: [
-    tailwindcss(),
+//    tailwindcss(),
     laravel({
       input: [
         'resources/css/app.css',
@@ -74,7 +74,6 @@ export default defineConfig({
       'gsap',
       'imagesloaded',
       'isotope-layout',
-      'purecounter_vanilla',
       'swiper',
       'typed.js'
     ],

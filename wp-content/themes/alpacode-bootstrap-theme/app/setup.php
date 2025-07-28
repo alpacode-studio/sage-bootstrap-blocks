@@ -153,15 +153,3 @@ add_action('widgets_init', function () {
         'id' => 'sidebar-footer',
     ] + $config);
 });
-
-/* Google Fonts */
-add_action('wp_enqueue_scripts', function () {
-    // Google Fonts
-    wp_enqueue_style('google-fonts', 'https://fonts.googleapis.com/css2?family=Inter:wght@100..900&display=swap', [], null);
-    
-    // Add preconnect for performance
-    add_action('wp_head', function() {
-        echo '<link rel="preconnect" href="https://fonts.googleapis.com">' . "\n";
-        echo '<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>' . "\n";
-    }, 1);
-}, 100);

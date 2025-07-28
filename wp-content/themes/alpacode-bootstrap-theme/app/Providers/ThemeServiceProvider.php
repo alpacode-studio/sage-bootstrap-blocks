@@ -24,5 +24,13 @@ class ThemeServiceProvider extends SageServiceProvider
     public function boot()
     {
         parent::boot();
+        \Roots\view()->composer(
+            'components-grid',
+            \App\View\Composers\ComponentGridComposer::class
+        );
+        \Roots\view()->composer(
+            'page-test',
+            \App\View\Composers\MasonryComposer::class
+        );
     }
 }

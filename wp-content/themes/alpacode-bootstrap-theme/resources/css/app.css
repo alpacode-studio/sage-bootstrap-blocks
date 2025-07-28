@@ -1,16 +1,31 @@
-/* Import Bootstrap and libraries FIRST */
-@import 'bootstrap/dist/css/bootstrap.min.css';
-@import 'bootstrap-icons/font/bootstrap-icons.css';
-@import 'aos/dist/aos.css';
-
-/* Import your custom instant.css LAST so it overrides Bootstrap */
-@import './instant-theme.css';
-
-/* Sage theme sources */
 @source "../views/";
 @source "../../app/";
 
-/* PERFORMANCE OPT */
+/* Only include if needed globally */
+.sr-only {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  margin: -1px;
+  overflow: hidden;
+  clip: rect(0, 0, 0, 0);
+  white-space: nowrap;
+  border: 0;
+}
+
+.sr-only.focus\:not-sr-only:focus {
+  position: static;
+  width: auto;
+  height: auto;
+  padding: 0;
+  margin: 0;
+  overflow: visible;
+  clip: auto;
+  white-space: normal;
+}
+
+/* Performance optimizations */
 .isotope-container {
   contain: layout style;
 }
@@ -19,7 +34,7 @@
   contain: layout;
 }
 
-/* BOOTSTRAP CONFLICTS */
+/* Bootstrap conflicts resolution */
 .features .features-grid {
   display: grid !important;
 }
@@ -33,4 +48,3 @@
     grid-template-columns: 1fr !important;
   }
 }
-

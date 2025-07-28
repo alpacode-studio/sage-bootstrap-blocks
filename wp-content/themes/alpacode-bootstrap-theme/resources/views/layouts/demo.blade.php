@@ -16,53 +16,46 @@
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
     
+    <!-- Theme switcher -->
+    <script>
+      (function() {
+        const storedTheme = localStorage.getItem('theme') || 
+          (window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light');
+        document.documentElement.setAttribute('data-bs-theme', storedTheme);
+      })();
+    </script>
+
     @php(do_action('get_header'))
     @php(wp_head())
 
-    {{-- Conditional Asset Loading based on page --}}
-    @if(is_page('promotion'))
-      {{-- Clean assets for showcase page --}}
-      @vite(['resources/css/promotion.css', 'resources/js/promotion.js'])
-    @else
-      {{-- Bootstrap assets for theme pages --}}
-      @vite(['resources/css/global.css', 'resources/js/main.js'])
-
-      <!-- Theme switcher for bootstrap pages -->
-      <script>
-        (function() {
-          const storedTheme = localStorage.getItem('theme') || 
-            (window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light');
-          document.documentElement.setAttribute('data-bs-theme', storedTheme);
-        })();
-      </script>
-    @endif
+    {{-- Vite Assets - This now handles all CSS and JS --}}
+    @vite(['resources/css/app.css', 'resources/js/app.js'])
     
     @stack('styles')
   </head>
 
-  <body @php(body_class())>
+  <body @php(body_class('index-page'))>
     @php(wp_body_open())
 
     <div id="app">
-      @if(is_page('showcase'))
-        {{-- No header/footer for showcase pages --}}
-        <main id="main">
-          @yield('content')
-        </main>
-      @else
-        {{-- Normal theme layout --}}
-        @include('sections.header')
+      <!--
+      <a class="sr-only focus:not-sr-only" href="#main">
+        {{ __('Skip to content', 'sage') }}
+      </a>
+      -->
 
-        <main id="main" class="main">
-          @yield('content')
-        </main>
+      @include('sections.header')
 
-        @hasSection('sidebar')
-          <aside class="sidebar">
-            @yield('sidebar')
-          </aside>
-        @endif
+      <main id="main" class="main">
+        @yield('content')
+      </main>
+
+      @hasSection('sidebar')
+        <aside class="sidebar">
+          @yield('sidebar')
+        </aside>
       @endif
+
     </div>
 
     @stack('scripts')

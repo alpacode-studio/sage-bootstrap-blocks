@@ -43,13 +43,6 @@
   <body @php(body_class())>
     @php(wp_body_open())
 
-    @include('components.loader', [
-      'background' => 'gradient-purple',
-      'animation' => 'hamster',
-      'text' => 'LOADING. . .',
-      'delay' => 600
-    ])
-
     <div id="app">
       @if(is_page('showcase'))
         {{-- No header/footer for showcase pages --}}

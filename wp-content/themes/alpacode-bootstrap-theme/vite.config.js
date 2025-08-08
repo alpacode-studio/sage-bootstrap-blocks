@@ -2,6 +2,7 @@ import { defineConfig, loadEnv } from 'vite'
 import laravel from 'laravel-vite-plugin'
 import { wordpressPlugin, wordpressThemeJson } from '@roots/vite-plugin'
 import path from 'path'
+import imagemin from 'vite-plugin-imagemin'
 
 // https://vitejs.dev/config/
 export default defineConfig(({ command, mode }) => {
@@ -43,6 +44,13 @@ export default defineConfig(({ command, mode }) => {
         customSpacing: true,
         // Include custom properties
         customProperties: true,
+      }),
+
+      imagemin({
+        gifsicle: { optimizationLevel: 7 },
+        mozjpeg: { quality: 80 },
+        pngquant: { quality: [0.65, 0.8] },
+        webp: { quality: 80 } // This converts images to WebP
       }),
     ],
     
@@ -123,7 +131,7 @@ export default defineConfig(({ command, mode }) => {
           assetFileNames: (assetInfo) => {
             const info = assetInfo.name.split('.')
             const ext = info[info.length - 1]
-            if (/png|jpe?g|svg|gif|tiff|bmp|ico/i.test(ext)) {
+            if (/png|jpe?g|svg|gif|tiff|bmp|ico|PNG/i.test(ext)) {
               return `assets/images/[name]-[hash][extname]`
             } else if (/woff2?|ttf|otf|eot/i.test(ext)) {
               return `assets/fonts/[name]-[hash][extname]`
